@@ -3,33 +3,36 @@ This is a dockerized version of the [Lair Framework](https://github.com/lair-fra
 
 It also includes [ngrok](https://ngrok.com/), to help automate the process of sharing your Lair instance with co-workers.
 
-This was inspired and built off the initial work done by [b00stfr3ak](https://github.com/b00stfr3ak) here: [https://github.com/b00stfr3ak/dockerfiles/tree/master/lair](https://github.com/b00stfr3ak/dockerfiles/tree/master/lair);
+This is a private fork of the [lair-docker](https://github.com/ryhanson/lair-docker) repository.  It's modified from the original to allow for real-time editing of the lair source code for development purposes.
+
+
+The original project was inspired and built off the initial work done by [b00stfr3ak](https://github.com/b00stfr3ak) here: [https://github.com/b00stfr3ak/dockerfiles/tree/master/lair](https://github.com/b00stfr3ak/dockerfiles/tree/master/lair);
 
 ## Installation
 
 First make sure you have docker installed. Here are [OS X Beta](https://docs.docker.com/docker-for-mac/) and [Linux](https://docs.docker.com/linux/step_one/) instructions.
 
 ```bash
-$ git clone https://github.com/ryhanson/lair-docker.git
+$ git clone https://github.com/t1v0/lair-docker.git
 $ cd lair-docker
+```
+
+Then you will need to modify the docker-compose.yml file to point to the volume location of the lair source code.  Once that is set to the correct path:
+
+```
 $ docker-compose build
 $ docker-compose up
 ```
 
 If everything worked, you should see something like:
 ```bash
-lair_setup   | MongoDB shell version: 3.2.7
-lair_setup   | connecting to: lairdb:27017/admin
-lair_setup   | "Replication set initialized."
-lair_caddy   | Activating privacy features... done.
-lair_caddy   | 0.0.0.0:11013
-lair_caddy   | 0.0.0.0:11012
-lair_setup exited with code 0
-lair_lair    | Created admin@localhost with password 1234abcd5678ef
-lair_api     | 2016/06/20 06:29:42 Listening on 0.0.0.0:11015
+lair_lair    | => Started proxy.
+lair_lair    | => Started your app.
+lair_lair    | 
+lair_lair    | => App running at: http://0.0.0.0
 ```
 
-Copy, paste, save, or write down your admin credentials. Then you can press `Ctrl+C` to stop all the services.
+On first run the admin password will be created and displayed in the messages.  Copy, paste, save, or write down your admin credentials. Then you can press `Ctrl+C` to stop all the services.
 
 ## Usage
 

@@ -12,6 +12,8 @@ services:
                 depends_on:
                         - lairdb
                         - lairsetup
+                volumes:
+                        - $HOME/Scratchpad/Projects/lair/app:/root/app/lair
         lairapi:
                 hostname: lairapi
                 container_name: lair_api
