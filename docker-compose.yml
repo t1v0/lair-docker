@@ -58,11 +58,11 @@ services:
         lairdb:
                 hostname: lairdb
                 container_name: lair_db
-                image: mongo
+                image: mongo:latest
                 restart: always
                 volumes:
                         - $HOME/.lair/mongodb/data/db:/data/db
-                entrypoint: ["/usr/bin/mongod", "--dbpath=/data/db", "--quiet", "--replSet", "rs0", "--logpath", "/var/log/mongodb.log", "--logappend"]
+                command: mongod --bind_ip_all --replSet=rs0
         lairsetup:
                 hostname: lairsetup
                 container_name: lair_setup
